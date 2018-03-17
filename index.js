@@ -29,9 +29,6 @@ function TextDecoder(encoding) {
   }
   else {
     this.encoding = 'utf-8';
-    if (typeof this.fatal !== 'boolean') {
-      throw new TypeError('fatal flag must be boolean');
-    }
     this.decode = function (view, options) {
       if (typeof view === 'undefined') {
         return '';
