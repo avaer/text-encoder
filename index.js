@@ -15,9 +15,10 @@ function TextEncoder(encoding) {
       }
       var binstr = unescape(encodeURIComponent(str)),
         arr = new Uint8Array(binstr.length);
-      binstr.split('').forEach(function(char, i) {
-        arr[i] = char.charCodeAt(0);
-      });
+      const split = binstr.split('');
+      for (let i = 0; i < split.length; i++) {
+        arr[i] = split[i].charCodeAt(0);
+      }
       return arr;
     };
   }
@@ -44,9 +45,9 @@ function TextDecoder(encoding) {
       } else {
         var arr = new Uint8Array(view.buffer),
           charArr = new Array(arr.length);
-        arr.forEach(function(charcode, i) {
-          charArr[i] = String.fromCharCode(charcode);
-        });
+        for (let i = 0; i < arr.length; i++) {
+          charArr[i] = String.fromCharCode(arr[i]);
+        }
         return decodeURIComponent(escape(charArr.join('')));
       }
     }
