@@ -44,9 +44,9 @@ function TextDecoder(encoding) {
         throw new TypeError('passed argument must be an array buffer view');
       } else {
         var arr = new Uint8Array(view.buffer),
-          charArr = new Array(arr.length);
-        for (let i = 0; i < arr.length; i++) {
-          charArr[i] = String.fromCharCode(arr[i]);
+          charArr = new Array(view.byteLength);
+        for (let i = 0; i < view.byteLength; i++) {
+          charArr[i] = String.fromCharCode(arr[i + view.byteOffset]);
         }
         return decodeURIComponent(escape(charArr.join('')));
       }
