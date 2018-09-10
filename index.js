@@ -43,7 +43,7 @@ function TextDecoder(encoding) {
       if (!ArrayBuffer.isView(view)) {
         throw new TypeError('passed argument must be an array buffer view');
       } else {
-        var arr = new Uint8Array(view.buffer),
+        var arr = new Uint8Array(view.buffer, view.byteOffset, view.byteLength),
           charArr = new Array(arr.length);
         for (let i = 0; i < arr.length; i++) {
           charArr[i] = String.fromCharCode(arr[i]);
